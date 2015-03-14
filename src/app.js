@@ -8,9 +8,8 @@ var UI = require('ui');
 var Vector2 = require('vector2');
 
 var main = new UI.Card({
-  console.log("This is main");
   title: 'Pebble.js',
-  icon: 'images/menu_icon.png',
+  icon: 'resources/apple-icon.png',
   subtitle: 'Hello World!',
   body: 'Press any button.'
 });
