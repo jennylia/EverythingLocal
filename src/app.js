@@ -6,13 +6,23 @@
 
 var UI = require('ui');
 var Vector2 = require('vector2');
+var Vibe = require('ui/vibe');
+var Accel = require('ui/accel');
+
+/*Landing Page*/
 var nextMonday = function()
 {
-  var today = new Date();
+  //var today = new Date();
   //var weekday = today.getDay();
-  var weekeday = 3;
+  var weekday = 1;
   var days;
   
+  //end early if it's monday
+  if (weekday == 1){
+    return "Today is meat free monday!";
+  }
+  
+  //sunday case 
   if(!weekday){
     days = 1;
   }else{
@@ -25,23 +35,24 @@ var nextMonday = function()
      days_text = "day";
   }
   
-  var msg = "Next monday in: " + days + " " + days_text;
-  
-  if (weekday == 1){
-    msg = "Today is meat free monday!";
-  }
-  
-  return msg;
+  return "Next monday in: " + days + " " + days_text;
+ 
 };
 
+//Landing Page
 var main = new UI.Card({
   title: '#MFM',
   icon: 'images/small.png',
-  subtitle: 'Eat local!',
+  subtitle: 'Eat local',
   body: nextMonday()
 });
 
-main.show();
+main.show(function(){
+  var today = new Date();
+  if (today.getDay() == 1){
+    Vibe.vibrate('long');
+  }
+});
 
 main.on('click', 'up', function(e) {
   
@@ -65,6 +76,7 @@ main.on('click', 'up', function(e) {
   menu.show();
 });
 
+//The menu
 main.on('click', 'select', function(e) {
   var wind = new UI.Window();
   var textfield = new UI.Text({
@@ -85,3 +97,6 @@ main.on('click', 'down', function(e) {
   card.body('The simplest window type in Pebble.js.');
   card.show();
 });
+
+Accel.init();
+
