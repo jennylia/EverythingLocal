@@ -30,6 +30,16 @@
                 "type": "font"
             },
             {
+                "file": "images/small.png",
+                "name": "IMAGES_SMALL_PNG",
+                "type": "png"
+            },
+            {
+                "file": "images/leaf.png",
+                "name": "IMAGES_LEAF_PNG",
+                "type": "png"
+            },
+            {
                 "file": "images/apple-icon.png",
                 "name": "IMAGES_APPLE_ICON_PNG",
                 "type": "png"

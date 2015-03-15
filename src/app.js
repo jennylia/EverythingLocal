@@ -6,22 +6,51 @@
 
 var UI = require('ui');
 var Vector2 = require('vector2');
+var nextMonday = function()
+{
+  var today = new Date();
+  //var weekday = today.getDay();
+  var weekeday = 3;
+  var days;
+  
+  if(!weekday){
+    days = 1;
+  }else{
+    days = 8 - weekday;
+  }
+   
+  var days_text = "days";
+  
+  if(days == 1){
+     days_text = "day";
+  }
+  
+  var msg = "Next monday in: " + days + " " + days_text;
+  
+  if (weekday == 1){
+    msg = "Today is meat free monday!";
+  }
+  
+  return msg;
+};
 
 var main = new UI.Card({
-  title: 'Pebble.js',
-  icon: 'resources/apple-icon.png',
-  subtitle: 'Hello World!',
-  body: 'Press any button.'
+  title: '#MFM',
+  icon: 'images/small.png',
+  subtitle: 'Eat local!',
+  body: nextMonday()
 });
 
 main.show();
 
 main.on('click', 'up', function(e) {
+  
+
   var menu = new UI.Menu({
     sections: [{
       items: [{
         title: 'Pebble.js',
-        icon: 'images/menu_icon.png',
+        icon: 'images/small.png',
         subtitle: 'Can do Menus'
       }, {
         title: 'Second Item',
